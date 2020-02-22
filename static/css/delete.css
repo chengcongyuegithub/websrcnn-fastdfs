@@ -1,0 +1,21 @@
+.imgDiv {
+            display: inline-block;
+            position: relative;
+}
+
+.delete {
+        font-color: #ececec;
+        background-color: white;
+        border-radius: 100%;
+        opacity: 0.5;
+        cursor:pointer;
+        transform: rotate(45deg);
+        font-size: 30px;
+        position: absolute;
+        top: 0px;
+        right: 5px;
+        text-align: center;
+        width: 30px;
+        height: 30px;
+        display: block;
+}

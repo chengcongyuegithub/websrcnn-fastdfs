@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片超分辨率重构</title>
+</head>
+<link rel="stylesheet" href="../static/css/index.css" />
+<script type="text/javascript" src="../static/js/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="../static/js/uploader.js"></script>
+<body style="background-color: lightyellow">
+    <script type="text/javascript" src="../static/js/background.js"></script>
+    <div class="top">
+				<ul>
+					<li>
+						<a href="#"><b>图</b></a>
+					</li>
+					<li>
+						<a href="#"><b>像</b></a>
+					</li>
+					<li>
+						<a href="#"><b>超</b></a>
+					</li>
+					<li>
+						<a href="#"><b>分</b></a>
+					</li>
+					<li>
+						<a href="#"><b>辨</b></a>
+					</li>
+					<li>
+						<a href="#"><b>率</b></a>
+					</li>
+					<li>
+						<a href="#"><b>重</b></a>
+					</li>
+					<li>
+						<a href="#"><b>构</b></a>
+					</li>
+					<li>
+						<a href="#"><b>处</b></a>
+					</li>
+					<li>
+						<a href="#"><b>理</b></a>
+					</li>
+				</ul>
+		</div>
+        <div id="main" class="main">
+			<a href="javascript:;" class="file">选择文件
+				<input type="file" name="file" id="fileinput" accept="image/jpg,image/jpeg,image/png,image/PNG,image/bmp" />
+			</a>
+			<div>
+				<input id="uploader" type="button" value="上传" class="file" style="margin-left: 400px;" />
+			</div>
+		</div>
+		<div id="contentpic">
+		{% for picTemp in picList %}
+			<div id="showpicture">
+				{% for pic in picTemp %}
+					<a target="_blank" href='/detail/{{pic.orig_id}}'><img src="{{pic.url}}"/></a>
+				{% endfor%}
+			</div>
+		{% endfor%}
+		</div>
+</body>
+</html>

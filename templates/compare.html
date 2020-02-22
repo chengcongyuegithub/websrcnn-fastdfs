@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>比较</title>
+    <link rel="stylesheet" href="../static/css/index.css"/>
+    <script type="text/javascript" src="/static/js/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="/static/js/compare.js"></script>
+    <style>
+			.bidD{
+				margin: 20px 0px 0px 20px;
+				float: left;
+			}
+			.textP{
+				font-size: 20px;
+				text-align: center;
+			}
+
+		</style>
+</head>
+<body style="background-color: lightyellow">
+<script type="text/javascript" src="../static/js/background.js"></script>
+<div class="top">
+    <ul>
+        <li>
+            <a href="#"><b>图</b></a>
+        </li>
+        <li>
+            <a href="#"><b>像</b></a>
+        </li>
+        <li>
+            <a href="#"><b>超</b></a>
+        </li>
+        <li>
+            <a href="#"><b>分</b></a>
+        </li>
+        <li>
+            <a href="#"><b>辨</b></a>
+        </li>
+        <li>
+            <a href="#"><b>率</b></a>
+        </li>
+        <li>
+            <a href="#"><b>重</b></a>
+        </li>
+        <li>
+            <a href="#"><b>构</b></a>
+        </li>
+        <li>
+            <a href="#"><b>处</b></a>
+        </li>
+        <li>
+            <a href="#"><b>理</b></a>
+        </li>
+    </ul>
+</div>
+<div style="margin: 100px 0px 0px 50px;width: 1400px;height: 550px;">
+    <div id="srcnn_Upscale" class="bidD">
+        <p class="textP">这是经过SRCNN处理之后的图片</p>
+        <img src="{{url}}" class="comP">
+    </div>
+    <div id="bicubic_Upscale" class="bidD">
+        <p class="textP">这是经过传统方法处理之后的图片</p>
+        <img id="{{newId}}" src="{{newurl}}" class="comP">
+    </div>
+</div>
+</body>
+</html>

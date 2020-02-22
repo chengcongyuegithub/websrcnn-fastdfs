@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>detail</title>
+    <link rel="stylesheet" href="../static/css/index.css"/>
+    <link rel="stylesheet" href="../static/css/delete.css"/>
+    <script type="text/javascript" src="../static/js/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="../static/js/detail.js"></script>
+    <title>Detail</title>
+    <style type="text/css">
+
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        #tab {
+            /*margin-top: 100px;*/
+            padding: 5px;
+            height: 300px;
+            width: 800px;
+            margin: 100px auto;
+        }
+
+        #tab ul {
+            list-style: none;
+            display:;
+            height: 30px;
+            line-height: 40px;
+            border-bottom: 2px black solid;
+        }
+
+        #tab ul li {
+            text-align: center;
+            cursor: pointer;
+            float: left;
+            list-style: none
+            height: 29px;
+            line-height: 29px;
+            padding: 0px 20px;
+            margin-left: 20px;
+            border: 1px solid #BBB;
+            border-bottom: 2px solid black;
+            font-weight: 800;
+        }
+
+        #tab ul li.on {
+            border: 2px solid black;
+            border-bottom: 2px solid lightyellow;
+        }
+
+        .show {
+            /*height: 400px;*/
+            /*width: 576px;*/
+            line-height: 24px;
+            border-top: none;
+            padding: 1px;
+            border: 2px solid black;
+            text-align: center;
+            padding: 10px;
+
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .showD {
+            height: 200px;
+            width: 200px;
+            margin: 40px 0px;
+            display: inline-block;
+            border: none;
+            position: relative;
+            padding: 0px;
+        }
+
+        .showP {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body style="background-color: lightyellow">
+<script type="text/javascript" src="../static/js/background.js"></script>
+<div class="top">
+    <ul>
+        <li>
+            <a href="#"><b>图</b></a>
+        </li>
+        <li>
+            <a href="#"><b>像</b></a>
+        </li>
+        <li>
+            <a href="#"><b>超</b></a>
+        </li>
+        <li>
+            <a href="#"><b>分</b></a>
+        </li>
+        <li>
+            <a href="#"><b>辨</b></a>
+        </li>
+        <li>
+            <a href="#"><b>率</b></a>
+        </li>
+        <li>
+            <a href="#"><b>重</b></a>
+        </li>
+        <li>
+            <a href="#"><b>构</b></a>
+        </li>
+        <li>
+            <a href="#"><b>处</b></a>
+        </li>
+        <li>
+            <a href="#"><b>理</b></a>
+        </li>
+    </ul>
+</div>
+<div id="tab">
+    <ul>
+        {% for action in picActionList%}
+        {% if action=='Origin' %}
+        <li class="on">{{action}}</li>
+        {% elif action!='Thumbnail_50x50' %}
+        <li class="off">{{action}}</li>
+        {% endif %}
+        {% endfor%}
+    </ul>
+    <div id="picContent">
+        {% for pic in picDictList%}
+        {% if pic['pic'].action=='Origin' %}
+        <div class="show dd" name="pic">
+            <p style="text-align: center;">图片名称：{{pic['pic'].name}}</p>
+            <div id="{{pic['pic'].id}}_{{pic['pic'].action}}" class="showD"
+                 style="height:{{pic['height']}}px;width: {{pic['width']}}px;">
+                <img src="{{pic['pic'].url}}" class="showP"/>
+                <span class="delete">+</span>
+            </div>
+            <div id="srcnnfunctions">
+                <input id="picid" type="hidden" name="id" value="{{pic['pic'].id}}"/>
+                {% if flag==True %}
+                &nbsp; <input id="upscaling" type="button" name="upscaling" value="放大"/>&nbsp;<span id="times"></span>
+                {% endif%}
+                <input id="superresolution" type="button" name="superresolution" value="超分辨率处理"/>
+            </div>
+        </div>
+        {% elif pic['pic'].action!='Thumbnail_50x50' %}
+        <div class="hide dd" name="pic">
+            <p style="text-align: center;">图片名称：{{pic['pic'].name}}</p>
+            <div id="{{pic['pic'].id}}_{{pic['pic'].action}}" class="showD"
+                 style="height:{{pic['height']}}px;width: {{pic['width']}}px;">
+                <img src="{{pic['pic'].url}}" class="showP"/>
+                <span class="delete">+</span>
+            </div>
+            {% if pic['pic'].action.find('Upscale')!=-1 %}
+            <div class="comparefunctions">
+                <input id="compare" type="button" name="compare" value="比较"/>&nbsp;
+            </div>
+            {% endif %}
+        </div>
+        {% endif %}
+        {% endfor%}
+    </div>
+</div>
+</body>
+</html>
